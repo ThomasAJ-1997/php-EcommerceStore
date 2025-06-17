@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/*Main styles */
+@import "main.css";
+
+/*Navigation styles */
+@import "nav.css";
+@import "hamburgerMenu.css";
+
+/* Formating and Structuring styles */
+@import "forms.css";
+@import "structure.css";
+@import "text.css";
+
+/* Animations and keyframes */
+@import "animations.css";

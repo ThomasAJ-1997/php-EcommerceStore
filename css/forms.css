@@ -1,0 +1,66 @@
+.form {
+    margin-top: 5rem;
+}
+
+.input-field {
+    height: 5rem;
+    width: 80rem;
+    padding: 1rem;
+    margin-bottom: 15px;
+    transition: 1s ease;
+}
+
+::placeholder {
+    font-weight: 400;
+    opacity: 0.8;
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+.input-field:focus {
+    border: 2px solid cornflowerblue;
+}
+
+.input-submit {
+    position: relative;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 60px;
+    background: #222;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 4rem;
+}
+
+.input-submit label {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-top: 2.5rem;
+
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #000;
+    transform: scale(1.05, 1);
+}
+
+@media (max-width: 875px) {
+    .register {
+        height: 380%;
+    }
+
+    .input-field {
+        width: 40rem;
+    }
+}

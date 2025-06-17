@@ -1,0 +1,30 @@
+.main-heading {
+    margin-top: 18rem;
+    font-size: 8rem;
+}
+
+.secondary-heading {
+    margin-top: 12rem;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    font-size: 4rem;
+}
+
+.description-container {
+    margin-top: 3rem;
+    font-size: 2.5rem;
+    padding: 2rem 10rem;
+}
+
+.forgot {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+}
+
+.forgot a {
+    text-decoration: none;
+}
+
+.forgot a:hover {
+    text-decoration: underline;
+}
