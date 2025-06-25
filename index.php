@@ -1,5 +1,5 @@
 <?php
-require 'sys/Connect.php';
+require 'classes/Connect.php';
 
 $db = new Connect();
 $conn = $db->connect();

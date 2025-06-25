@@ -1,0 +1,42 @@
+.center .error-messages {
+  text-align: left;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  color: red;
+}
+
+.center .error-messages ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.center .error-messages li {
+  margin: 0.5rem 0;
+}
+.center .error-messages li::before {
+  content: "⚠️";
+  margin-right: 0.5rem;
+}
+
+.center .success-messages {
+  text-align: left;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  color: green;
+}
+
+.center .success-messages ul {
+  list-style-type: none;
+  padding: 0;
+}
+.center .success-messages li {
+  margin: 0.5rem 0;
+}
+.center .success-messages li::before {
+  content: "✅";
+  margin-right: 0.5rem;
+}
