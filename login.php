@@ -4,12 +4,6 @@ require 'includes/config_inc.php';
 require 'classes/Validator.php';
 require 'classes/Users.php';
 
-$firstname = '';
-$lastname = '';
-$email = '';
-$password = '';
-$errors = [];
-$success = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new Connect();
@@ -46,32 +40,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <section class="register">
     <div class="container-full">
-    <div class="center">
-        <h1 class="main-heading">Join the pioneers club</h1>
+       <div class="center">
+        <h1 class="main-heading">Hello Pioneer</h1>
         <div class="description-container">
-        <p class="description">Create an account to access exclusive content and connect with like-minded individuals.</p>
+        <p class="description">Sign in and redeem points and access to exclusive deals.</p>
       
         <div class="form">
         <form action="register.php" method="post">
 
+        
             <div class="input-box">
-                <input type="text" name="firstname" class="input-field" placeholder="First Name" value="<?= htmlspecialchars($firstname); ?>">
-            </div>
-
-            <div class="input-box">
-                <input type="text" name="lastname" class="input-field" placeholder="Last Name" value="<?= htmlspecialchars($lastname); ?>">
-            </div>
-
-            <div class="input-box">
-                <input type="email" name="email" class="input-field" placeholder="Email" value="<?= htmlspecialchars($email); ?>">
+                <input type="email" name="email" class="input-field" placeholder="Email">
             </div>
 
             <div class="input-box">
                 <input type="password" name="password" class="input-field" placeholder="Password">
             </div>
 
+            <div class="input-box">
+                  <p class="forgot">Forgot Password? <a href="forgot.php">Click here</a> to reset your password.</p>
+            </div>
 
-                  <?php if (!empty($success)): ?>
+    
+
+
+            <?php if (!empty($success)): ?>
             <div class="success-messages">
                 <ul>
                     <?php foreach ($success as $su): ?>
@@ -94,16 +87,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="input-submit">
                 <button class="submit-btn" id="submit"></button>
-                <label for="submit">Sign Up</label>
+                <label for="submit">Sign In</label>
             </div>
         </form>
-    </div>
+      </div>
         <div class="container-text">
-        <h2 class="secondary-heading">Already have an account?</h2>
-        <p class="forgot">Already a SONS member? <a href="login.php">Sign in here</a> </p>
+        <h2 class="secondary-heading">Don't have an account?</h2>
+        <p class="forgot">Become a pioneer. <a href="register.php">Register here</a> </p>
         </div>
-
-
     </div>
     </div>
 
@@ -114,4 +105,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <script src="js/hamburger.js"></script>
+<script src="js/carousel.js"></script>
 <script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>

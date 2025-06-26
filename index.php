@@ -9,6 +9,8 @@ $conn = $db->connect();
 
 <?php require 'includes/nav.php'; ?>
 
+<?php require 'includes/carousel.php'; ?>
+
 <?php require 'includes/footer.php'; ?>
 
 

@@ -1,25 +1,24 @@
 .register {
-    height: 100vh;
-    width: 100%;
-    background-color: #eae3da;
+  height: 100vh;
+  width: 100%;
+  background-color: #eae3da;
 }
 
 .container-full {
-    background-color: #eae3da;
-    height: 200vh;
+  background-color: #f5f3f1;
+  height: 170vh;
 }
 
 .container-text {
-    background-color: #eae3da;
-    height: 50%;
-    width: 100%;
+  background-color: #f5f3f1;
+  height: 50%;
+  width: 100%;
 }
 
 .center {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
