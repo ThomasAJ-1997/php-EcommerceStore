@@ -20,7 +20,7 @@
     position: absolute;
     top: 5%;
     left: 5%;
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: #f8f9fa;
     z-index: 100;
 }
@@ -55,7 +55,7 @@
     right: 10px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1600px) {
     .carousel-text {
         font-size: 3rem;
     }

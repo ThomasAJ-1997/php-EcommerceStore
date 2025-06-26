@@ -1,0 +1,109 @@
+footer {
+    background-color: #222222;
+    color: #f5f3f1;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer p {
+    color: #ccc;
+    max-width: 25rem;
+    font-size: 1.5rem;
+    line-height: 23px;
+}
+
+footer a {
+    color: #f5f3f1;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+footer h4 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    text-transform: uppercase;
+
+}
+
+footer .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.footer-section .footer-container {
+    position: relative;
+}
+
+.footer-section .footer-top .footer-container,
+.footer-section .col2,
+.footer-section .footer-bottom .footer-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+
+}
+
+.footer-section .footer-bottom .footer-container {
+    padding: 1rem 2rem;
+    align-items: center;
+}
+
+.footer-section .footer-menu li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-section .footer-menu a:hover {
+    text-decoration: underline;
+}
+
+.brand {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.media-icons li,
+.service-icons li {
+    display: inline-block;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.media-icons a {
+    font-size: 2.5rem;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+
+.media-icons a:hover {
+    background: #f5f3f1;
+    color: #222222;
+}
+
+
+.service-icons a {
+    font-size: 2.5rem;
+}
+
+.service-icons a:hover {
+    color: #dbdbdb;
+}
+
+@media screen and (max-width: 900px) {
+    .footer-section .footer-top .footer-container,
+    .footer-section .footer-bottom .footer-container {
+        flex-direction: column;
+    }
+}
+
+

@@ -103,7 +103,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php require 'includes/footer.php'; ?>
 
-
-<script src="js/hamburger.js"></script>
-<script src="js/carousel.js"></script>
 <script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>
