@@ -4,32 +4,60 @@ require 'includes/config_inc.php';
 require 'classes/Validator.php';
 require 'classes/Users.php';
 
+if(isset($_SESSION['account_logged_in'])) {
+    header('location: dashboard.php');
+    exit;
+}
+
+$is_invalid = false;
+
+$id = '';
+$firstname = '';
+$lastname = '';
+$email = '';
+$password = '';
+$errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $db = new Connect();
     $conn = $db->connect();
 
-    $firstname = $_POST['firstname'];
-    $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     //////////////////////////////////////////////////////////////////////
     // Validate input
-    $validation = new Validator($firstname, $lastname, $email, $password);
+    $user = new User($firstname, $lastname, $email, $password);
+    $log_in = $user->getAccountEmail($conn, $email);
 
-    $errors = $validation->validate_account($conn);
 
-    //////////////////////////////////////////////////////////////////////
-    
-    if (empty($errors)) {
-        // Create User
-        $user = new User($firstname, $lastname, $email, $hashed_password);
-        $success = $user->create_user($conn);
-        
+    if (empty($email) || empty($password)) {
+        $errors[] = 'Please fill both username and password fields';
     }
-}
+
+    if ($log_in) {
+        if(password_verify($password, $log_in['password'])) {
+
+            session_regenerate_id();
+            $_SESSION['account_logged_in'] = TRUE;
+            $_SESSION['account_name'] = $log_in['firstname'];
+            $_SESSION['account_id'] = $log_in['id'];
+
+            header('location: dashboard.php');
+            exit;
+        } else {
+            $errors[] = 'Email and/or password is invalid, please try again';
+        }
+
+
+    } else {
+        $errors[] = 'Email and/or password is invalid, please try again';
+    }
+
+
+} $is_invalid = true;
+
 
 ?>
 
@@ -46,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p class="description">Sign in and redeem points and access to exclusive deals.</p>
       
         <div class="form">
-        <form action="register.php" method="post">
+        <form action="login.php" method="post">
 
         
             <div class="input-box">
@@ -60,20 +88,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="input-box">
                   <p class="forgot">Forgot Password? <a href="forgot.php">Click here</a> to reset your password.</p>
             </div>
-
-    
-
-
-            <?php if (!empty($success)): ?>
-            <div class="success-messages">
-                <ul>
-                    <?php foreach ($success as $su): ?>
-                        <li class="success_message"><?= htmlspecialchars($su); ?></li>
-                    <?php endforeach; ?>
-                </ul>
-                </div>
-            <?php endif; ?>
-
 
             <?php if (!empty($errors)): ?>
             <div class="error-messages">
@@ -103,4 +117,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php require 'includes/footer.php'; ?>
 
-<script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>

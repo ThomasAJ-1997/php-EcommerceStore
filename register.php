@@ -4,6 +4,11 @@ require 'includes/config_inc.php';
 require 'classes/Validator.php';
 require 'classes/Users.php';
 
+if(isset($_SESSION['account_logged_in'])) {
+    header('location: dashboard.php');
+    exit;
+}
+
 $firstname = '';
 $lastname = '';
 $email = '';
@@ -33,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Create User
         $user = new User($firstname, $lastname, $email, $hashed_password);
         $success = $user->create_user($conn);
+
         
     }
 }
@@ -111,7 +117,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php require 'includes/carousel.php'; ?>
 
 <?php require 'includes/footer.php'; ?>
-
-
-<script src="js/hamburger.js"></script>
-<script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>

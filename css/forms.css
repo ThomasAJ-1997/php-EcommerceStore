@@ -64,3 +64,13 @@
         width: 40rem;
     }
 }
+
+.login-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 440px;
+    height: 480px;
+    padding: 30px;
+    border-radius: 30px;
+}

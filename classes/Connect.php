@@ -2,7 +2,7 @@
 
 class Connect
 {
-    public function connect()
+    public function connect(): PDO
     {
         $db_host = "localhost";
         $db_name = "sons_ecommerce";

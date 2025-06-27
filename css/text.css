@@ -10,6 +10,12 @@
     font-size: 4rem;
 }
 
+.tertiary-heading {
+    margin-top: 18rem;
+    margin-bottom: 2.5rem;
+    font-size: 3rem;
+}
+
 .description-container {
     margin-top: 3rem;
     font-size: 2.5rem;

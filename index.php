@@ -13,6 +13,3 @@ $conn = $db->connect();
 
 <?php require 'includes/footer.php'; ?>
 
-
-<script src="js/hamburger.js"></script>
-<script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>

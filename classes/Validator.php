@@ -33,7 +33,6 @@ class Validator
         $this->email = $email;
         $this->password = $password;
         $this->errors = [];
-        $this->success = [];
 
     }
 
@@ -50,7 +49,8 @@ class Validator
 
     public function validate_account($conn): array 
     {
-         if (empty($this->firstname) || empty($this->lastname)) {
+
+        if (empty($this->firstname) || empty($this->lastname)) {
         $this->errors[] = "First name and last name are required.";
     }
 
@@ -92,13 +92,26 @@ class Validator
      * @param  PDO  $conn  The database connection object.
      * @return array|false  Returns the existing user data if found, otherwise false.
      */
-    protected function existing_user($conn) 
+    protected function existing_user($conn): false|array
     {
         $sql = "SELECT * FROM users WHERE email = :email";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
         $stmt->execute();
-        $existing_user = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $existing_user;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function validate_reset_password($conn): array
+    {
+        if (empty($email)) {
+            $this->errors[] = "Please enter your email.";
+        }
+
+        if (!preg_match("/^[^@]+@[^@]+\.[a-z]{2,6}$/i", $this->email)) {
+            $this->errors[] = "Invalid email format.";
+        }
+
+        return $this->errors;
+
     }
 }
