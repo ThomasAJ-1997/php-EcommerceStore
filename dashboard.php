@@ -46,7 +46,7 @@ $user = $user_information->getAddressInformation($conn);
     <div class="dashboard-right">
         <ul>
             <li> <i class="fa fa-user" aria-hidden="true"></i>
-                <?= !empty($user['firstname']) ? $user['firstname'] : 'No address provided'; ?>
+                <?= !empty($user['firstname']) ? $user['firstname'] : 'No Firstname provided'; ?>
                 <?= !empty($user['lastname']) ? $user['lastname'] : 'No surname provided'; ?>
             </li>
 
@@ -54,7 +54,10 @@ $user = $user_information->getAddressInformation($conn);
                 <?= !empty($user['address']) ? $user['address'] : 'No address provided'; ?>
             </li>
 
-            <li> <?= $user['address2'];  ?> </li>
+            <li><i class="fa fa-address-book" aria-hidden="true"></i>
+                <?=  !empty($user['address2']) ? $user['address2'] : '';  ?>
+            </li>
+
             <li> <i class="fa fa-building" aria-hidden="true"></i>
                 <?= !empty($user['city']) ? $user['city'] : 'No City Provided'; ?>
                 <?= !empty($user['postcode']) ? $user['postcode'] : 'No postcode provided'; ?>
@@ -68,8 +71,8 @@ $user = $user_information->getAddressInformation($conn);
             </li>
         </ul>
 
-        <?php if (empty($user['address'] || empty($user['city']) ||
-                  empty($user['postcode']) || empty('phone'))) : ?>
+        <?php if ($user['address'] === null || $user['city'] === null ||
+                  $user['postcode'] === null || $user['phone'] ===  null) : ?>
             <p class="information-text"> Go to <a href="addressbook.php">Address book</a> to complete your details. </p>
         <?php endif; ?>
 

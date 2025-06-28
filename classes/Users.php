@@ -1,6 +1,6 @@
 <?php 
 
-class User extends UserInformation
+class User
 {
     public PDO $conn;
     public string $firstname;
@@ -21,7 +21,7 @@ class User extends UserInformation
 
     public function create_user($conn): array
     {
-        $sql = "INSERT INTO users(firstname, lastname, email, password, active)
+        $sql = "UPDATE INTO users(firstname, lastname, email, password, active)
                 VALUES(:firstname, :lastname, :email, :password, :active)";
             
         $stmt = $conn->prepare($sql);

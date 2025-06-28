@@ -10,6 +10,10 @@
     transition: 1s ease;
 }
 
+.input-field:focus {
+    border: 1px solid #007bff;
+}
+
 ::placeholder {
     font-weight: 400;
     opacity: 0.8;
@@ -73,4 +77,11 @@
     height: 480px;
     padding: 30px;
     border-radius: 30px;
+}
+
+.address-label {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: brown;
+    font-weight: 600;
 }
