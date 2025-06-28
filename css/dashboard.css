@@ -1,0 +1,64 @@
+.dashboard-section {
+    height: 100vh;
+    padding-top: 14rem;
+}
+
+.text-box {
+    padding: 4rem 4rem;
+}
+
+.dashboard-left {
+    width: 33%;
+    height: 100vh;
+    float: left;
+    box-sizing: border-box;
+
+
+}
+
+.dashboard-left ul {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 4rem 4rem;
+
+    color: black;
+    text-decoration: none;
+
+}
+
+.dashboard-left li {
+    list-style: none;
+    padding: 1rem;
+
+}
+
+.dashboard-left a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.dashboard-left a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-right {
+    width: 66%;
+    height: 100vh;
+    float: left;
+    box-sizing: border-box;
+}
+
+.dashboard-right ul {
+    font-size: 3rem;
+    font-weight: 400;
+    margin: 4rem 4rem;
+    letter-spacing: 3px;
+    color: #6a6b6e;
+    text-decoration: none;
+}
+
+.dashboard-right li {
+    list-style: none;
+    padding: 0.5rem;
+
+}

@@ -2,7 +2,6 @@
 
 ?>
 
-<div class="nav-banner">Placeholder Text - 'This will contain most recent information about exclusive deals and news.'</div>
 
 <nav class="responsive-nav">
     <div class="nav-left">
@@ -31,7 +30,7 @@
             <li><a href="#">Blog</a></li>
             <li><a href="#">Club</a></li>
             <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
-            <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+            <li><a href="dashboard.php"><i class="fa fa-user" aria-hidden="true"></i></a></li>
             <li><a href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a></li>
         </ul>
     </div>

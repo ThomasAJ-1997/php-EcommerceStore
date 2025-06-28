@@ -1,6 +1,6 @@
 <?php 
 
-class User
+class User extends UserInformation
 {
     public PDO $conn;
     public string $firstname;

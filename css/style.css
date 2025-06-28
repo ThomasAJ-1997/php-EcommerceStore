@@ -2,6 +2,7 @@
 
 /*Main styles */
 @import "main.css";
+@import "dashboard.css";
 @import "footer.css";
 
 /*Navigation styles */
