@@ -19,7 +19,7 @@ class User
         $this->success = [];
     }
 
-    public function create_user($conn)
+    public function create_user($conn): array
     {
         $sql = "INSERT INTO users(firstname, lastname, email, password, active)
                 VALUES(:firstname, :lastname, :email, :password, :active)";

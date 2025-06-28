@@ -1,6 +1,9 @@
 <?php
-require 'classes/Connect.php';
+
 require 'includes/config_inc.php';
+
+require 'classes/Cookies.php';
+require 'classes/Connect.php';
 require 'classes/Validator.php';
 require 'classes/Users.php';
 
@@ -16,6 +19,7 @@ $firstname = '';
 $lastname = '';
 $email = '';
 $password = '';
+$remember = '';
 $errors = [];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -31,6 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = new User($firstname, $lastname, $email, $password);
     $log_in = $user->getAccountEmail($conn, $email);
 
+    $cookies = new Cookies($remember, $email);
+    $remember = $cookies->checkCookies();
 
     if (empty($email) || empty($password)) {
         $errors[] = 'Please fill both username and password fields';
@@ -78,7 +84,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         
             <div class="input-box">
-                <input type="email" name="email" class="input-field" placeholder="Email">
+                <input type="email" name="email" class="input-field" placeholder="Email"
+                value="<?php if(!empty($email)) { echo $email; } elseif (isset($_COOKIE['remember_email'])) { echo $_COOKIE['remember_email']; } ?>">
             </div>
 
             <div class="input-box">
@@ -86,7 +93,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="input-box">
+                <div>
+                    <input name="remember" type="checkbox" id="check">
+                    <label for="check">Remember Me </label>
+                </div>
+                <br>
+                <div>
                   <p class="forgot">Forgot Password? <a href="forgot.php">Click here</a> to reset your password.</p>
+                </div>
             </div>
 
             <?php if (!empty($errors)): ?>
