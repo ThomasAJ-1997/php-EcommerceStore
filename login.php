@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
         <div class="container-text">
         <h2 class="secondary-heading">Don't have an account?</h2>
-        <p class="forgot">Become a pioneer. <a href="register.php">Register here</a> </p>
+        <p class="forgot">Become a pioneer: <a href="register.php">Register here</a> </p>
         </div>
     </div>
     </div>

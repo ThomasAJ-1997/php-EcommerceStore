@@ -14,7 +14,7 @@
 
 
         <ul class="menu">
-            <li><a href="#">Shop All</a></li>
+            <li><a href="/sonsEcommerce/shopall.php">Shop All</a></li>
             <li><a href="#">Men</a></li>
             <li><a href="#">Women</a></li>
             <li><a href="#">Collections</a></li>
@@ -35,6 +35,17 @@
         </ul>
     </div>
 </nav>
+
+
+<style>
+    .responsive-nav {
+        transition: background-color 0.3s, opacity 0.3s;
+    }
+
+    .scrolled {
+        background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent */
+    }
+</style>
 
 
 

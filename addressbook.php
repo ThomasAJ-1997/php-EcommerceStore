@@ -63,8 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         font-weight: 600;
     }
 
-    .feature-button:last-child {
+    .feature-button:nth-child(2) {
         background-color: #ae0e0e;
+        color: #f8f9fa;
+        font-weight: 600;
+    }
+
+    .feature-button:last-child {
+        background-color: #222222;
         color: #f8f9fa;
         font-weight: 600;
     }
@@ -100,6 +106,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         margin-right: 0.5rem;
     }
 
+    @media (max-width: 650px) {
+        .address-block {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+    }
+
 </style>
 
 <?php require 'includes/header.php'; ?>
@@ -114,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <hr class="dashboard-divide">
     </div>
 
-    <div class="dashboard-left">
+    <div class="dashboard-left address-block">
         <ul>
             <li><?= $user['firstname']; ?> <?= $user['lastname']; ?> </li>
             <li><?= $user['address'] ?? 'Address: please edit' ?> </li>
@@ -129,11 +145,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         onclick="document.getElementById('edit-address-form').style.display = 'block';">
                     Edit
                 </button>
-
                 <button class="feature-button"
                         onclick="if(confirm('Are you sure you want to delete this address?')) { window.location.href='data/delete_address.php?id=<?= $user['id']; ?>'; }">
                     Delete
-                </button>
+                </button> <br> <br>
+                <a href="dashboard.php" class="feature-button feature-back">
+                   dashboard
+                </a>
             </li>
         </ul>
 

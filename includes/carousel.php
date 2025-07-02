@@ -1,4 +1,3 @@
-
 <div class="carousel-container">
     <div class="carousel">
         <div class="carousel-item">
@@ -41,5 +40,4 @@
         <i class="fa fa-arrow-right" aria-hidden="true"></i>
     </button>
 </div>
-
 

@@ -11,16 +11,16 @@
     justify-content: space-around;
     align-items: center;
     padding: 30px 20px;
-    background: #f8f9fa;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
 }
+
 
 .menu {
     list-style: none;
     display: flex;
     gap: 40px;
     margin: 0;
-    padding: 0;
+    padding: 0
 }
 
 .menu li {
@@ -49,6 +49,9 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+        background: #f8f9fa;
+        margin-bottom: 6rem;
+        padding: 80px 0;
     }
 
     .nav-center {
@@ -72,3 +75,5 @@
         margin-top: 10rem;
     }
 }
+
+

@@ -1,0 +1,344 @@
+.hero-section {
+    width: 100%;
+    height: 100%;
+}
+
+.home-section {
+    width: 100vw;
+    height: 60vh;
+}
+
+
+.hero-box {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-top: 13.6rem;
+    background: url("../content/hero.jpg") repeat center;
+    background-size: cover;
+    filter: brightness(75%);
+}
+
+.hero-text a {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    transform: translate(40%, 80%);
+
+    color: #f5f3f1;
+    border: 1px solid black;
+    padding: 2rem 4rem;
+    font-size: 2.5rem;
+    text-decoration: none;
+    background-color: #88480a;
+    transition: 0.3s ease;
+}
+
+.hero-text a:hover {
+    background-color: #97510c;
+}
+
+.sons-headline {
+    position: absolute;
+    font-size: 25rem;
+    top: 5%;
+    left: 5%;
+    color: #ae0e0e;
+
+}
+
+.item-list {
+    width: 100%;
+}
+.item-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 3rem;
+    margin-right: 7rem;
+
+
+}
+
+.item-text p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.item-text p a {
+    color: #222222;
+    text-decoration: none;
+}
+
+.item-text p a:hover {
+    text-decoration: underline;
+}
+
+.item-collection {
+    height: 100%;
+    margin-left: 3.5rem;
+    margin-top: 2rem;
+
+}
+
+.item {
+    height: 90%;
+    width: 80%;
+    background-color: #efeded;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item img {
+    height: 30rem;
+}
+
+.item p {
+    margin-top: 2.5rem;
+    margin-left: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.item a {
+    text-decoration: none;
+    color: #222222;
+}
+
+.item-information {
+    padding-top: 2rem;
+}
+
+@media (max-width: 1287px) {
+    .home-section {
+        height: auto;
+    }
+
+}
+
+@media (max-width: 654px) {
+    .home-section {
+        height: 50vh;
+    }
+
+    .item {
+        margin-left: 1rem;
+    }
+
+    .item:nth-child(2),
+    .item:nth-child(3),
+    .item:nth-child(4){
+        background-color: unset;
+        border: unset;
+    }
+
+    .item2 img,
+    .item2 p,
+    .item3 img,
+    .item3 p,
+    .item4 img,
+    .item4 p {
+        display: none;
+    }
+}
+
+
+@media (max-width: 880px) {
+    .sons-headline {
+        font-size: 15rem;
+    }
+
+    .hero-text a {
+        top: 25%;
+        left: 10%;
+        font-size: 2rem;
+    }
+}
+
+/* ADVERTISEMENT SECTION */
+
+.advertisement-section {
+    width: 93vw;
+    height: 80vh;
+    margin-bottom: 10rem;
+}
+
+
+.advert-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.advertisement {
+    height: 100%;
+    width: 100%;
+    margin-left: 3.5rem;
+    position: relative;
+}
+
+.advertisement:first-child {
+    background: url("../content/shirts.webp") no-repeat;
+    background-size: cover;
+}
+
+.advertisement:last-child {
+    background: url("../content/tops.webp") no-repeat ;
+    background-size: cover;
+}
+
+.advertisement2:first-child {
+    background: url("../content/jackets.webp") no-repeat ;
+    background-size: cover;
+}
+
+.advertisement2:last-child {
+    background: url("../content/bottoms.webp") no-repeat ;
+    background-size: cover;
+}
+
+.advert-information {
+    position: absolute;
+    color: #f8f9fa;
+    margin-top: 2rem;
+    margin-left: 1rem;
+}
+
+.advert-information span {
+    font-weight: 600;
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+.advert-information h2 {
+    font-size: 6rem;
+}
+
+.advert-information p {
+    font-size: 1.5rem;
+    padding-right: 30rem;
+    margin-bottom: 4rem;
+}
+
+.advert-information a {
+    color: #222222;
+    padding: 1.5rem 3rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: #f1dcce;
+    transition: 0.3s ease;
+    margin-top: 12rem;;
+}
+
+.advert-information a:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-1rem);
+}
+
+
+@media (max-width: 1100px) {
+    .advertisement-section {
+        height: 120vh;
+    }
+
+    .advert-container {
+        grid-template-columns: 1fr; /* Stack advertisements vertically */
+        gap: -1rem;
+    }
+
+    .advertisement {
+        height: 60vh; /* Adjust height to fit smaller viewport */
+        width: 95%;
+    }
+
+    .advert-information {
+        margin-top: 1rem; /* Adjust margin for better spacing */
+        margin-left: 1rem;
+    }
+
+    .advert-information h2 {
+        font-size: 4rem; /* Adjust font size for smaller screens */
+    }
+
+    .advert-information p {
+        font-size: 1.2rem; /* Adjust paragraph size */
+        padding-right: 2rem; /* Reduce padding for better fit */
+    }
+
+    .advert-information a {
+        font-size: 2rem; /* Adjust button size */
+        padding: 1rem 2rem;
+        margin-top: 3rem; /* Adjust spacing around button */
+    }
+}
+
+@media (max-width: 678px) {
+    .advertisement {
+        width: 80%;
+        margin-left: 4.5rem;
+    }
+}
+
+/* PRESALE */
+.presale-section {
+    position: relative;
+    height: 50vh;
+    width: 95%;
+    margin: auto;
+    background: url("../content/pre-loved.webp") center;
+    background-size: cover;
+    margin-bottom: 10rem;
+}
+
+.presale-information {
+    position: absolute;
+    color: #f8f9fa;
+
+    top: 20%;
+    left: 10%;
+    text-align: center;
+}
+
+.presale-information h2 {
+    font-size: 4rem;
+}
+
+.presale-information p {
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+}
+
+.presale-information a {
+    color: #222222;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    background-color: #f1dcce;
+    transition: 0.3s ease;
+    margin-top: 5rem;
+}
+
+.presale-information a:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-1rem);
+}
+
+@media (max-width: 680px) {
+    .presale-section {
+        width: 85%;
+    }
+
+    .presale-information {
+        left: 2.5%;
+    }
+}
+
+.break {
+    height: 2vh;
+}

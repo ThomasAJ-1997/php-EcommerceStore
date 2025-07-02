@@ -1,3 +1,4 @@
+
 <footer class="footer-section">
     <div class="footer-top">
         <div class="footer-container">
@@ -25,7 +26,7 @@
                 <li> <a href="">Accessories </a> </li>
             </ul>
 
-                <ul>
+                <ul class="footer-menu">
                     <li> <h4> COMPANY </h4> <li>
                     <li> <a href="">Contact Us </a> </li>
                     <li> <a href="">PR Enquiries </a> </li>
@@ -33,7 +34,7 @@
                     <li> <a href="">Reviews </a> </li>
                 </ul>
 
-                <ul>
+                <ul class="footer-menu">
                     <li> <h4> INFORMATION </h4> </li>
                     <li> <a href="">FAQs </a> </li>
                     <li> <a href="">Privacy Policy </a> </li>
@@ -68,8 +69,11 @@
     </div>
 </footer>
 
+
 <script src="js/hamburger.js"></script>
 <script src="js/carousel.js"></script>
+<script src="js/navScroll.js"></script>
+<script src="js/filtermenu.js"></script>
 <script src="https://kit.fontawesome.com/yourfontawesomekit.js" crossorigin="anonymous"></script>
 
 </body>
