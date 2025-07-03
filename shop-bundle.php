@@ -1,5 +1,9 @@
 <?php
 
+?>
+
+<?php
+
 
 ?>
 
@@ -8,10 +12,7 @@
 <?php require 'includes/nav.php'; ?>
 
 <section class="shop-headline">
-    <h2 class="shop-heading">SHOP ALL</h2>
-    <p>Discover unique vintage-inspired workwear clothing designed for craftspeople, artisans
-    and pioneers. Our collection features durable and stylish pieces inspired by the pasy and
-    made from hard-wearing materials for modern life.</p>
+    <h2 class="shop-heading">BUNDLES</h2>
 
     <?php require 'includes/filter-menu.php'; ?>
 </section>
@@ -107,5 +108,8 @@
 
 <?php require 'includes/carousel.php'; ?>
 
+<section class="break"> </section>
+
 <?php require 'includes/footer.php'; ?>
+
 

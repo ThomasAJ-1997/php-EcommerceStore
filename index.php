@@ -13,7 +13,7 @@ $conn = $db->connect();
     <div class="hero-box">
         <div class="hero-text">
             <h1 class="sons-headline">SONS</h1>
-            <a href="shopall.php">SHOP NOW ></a>
+            <a href="shop-all.php">SHOP NOW ></a>
         </div>
     </div>
 </section>

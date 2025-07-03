@@ -127,7 +127,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
 
-<?php require 'includes/carousel.php'; ?>
-
 <?php require 'includes/footer.php'; ?>
 

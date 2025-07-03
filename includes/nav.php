@@ -12,12 +12,11 @@
             <span class="bar"></span>
         </button>
 
-
         <ul class="menu">
-            <li><a href="/sonsEcommerce/shopall.php">Shop All</a></li>
-            <li><a href="#">Men</a></li>
-            <li><a href="#">Women</a></li>
-            <li><a href="#">Collections</a></li>
+            <li><a href="/sonsEcommerce/shop-all.php">Shop All</a></li>
+            <li><a href="/sonsEcommerce/shop-men.php">Men</a></li>
+            <li><a href="/sonsEcommerce/shop-bundle.php">Bundles</a></li>
+            <li><a href="/sonsEcommerce/shop-new-arrivals.php">New Arrivals</a></li>
         </ul>
     </div>
 
@@ -35,6 +34,79 @@
         </ul>
     </div>
 </nav>
+
+
+
+    <style>
+
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu li:hover > ul {
+            display: block;
+        }
+
+        .menu li ul {
+            display: none;
+            position: absolute;
+            top: 100%; /* Positions the dropdown below the parent menu item */
+            left: 0;
+            background-color: white;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+            padding: 10px 0;
+            list-style: none;
+            z-index: 1000;
+        }
+
+        .menu li ul li {
+            padding: 8px 15px;
+        }
+
+        .menu li ul li a {
+            text-decoration: none;
+            color: black;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .menu li ul li a:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .sub-menu {
+            margin-top: 2.5rem;
+            height: 30vh;
+            width: 100vw;
+            border-top: none;
+        }
+
+        .sub-menu h2 {
+            border-bottom: 1px solid #000;
+            padding-bottom: 3px;
+        }
+
+        .sub-menu h2,
+        .sub-menu a{
+            margin-left: 5rem;
+        }
+
+        .menu1 {
+            margin-left: -15.7rem;
+        }
+
+        .menu2 {
+            margin-left: -22.3rem;
+        }
+
+        .menu3 {
+            margin-left: -31.7rem;
+        }
+
+
+    </style>
+
 
 
 <style>
