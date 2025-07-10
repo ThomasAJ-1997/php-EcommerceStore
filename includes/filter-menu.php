@@ -1,5 +1,6 @@
 <?php
 
+
 ?>
 <section class="shop-filters">
     <button class="filter-button"> <i class="fa fa-filter" aria-hidden="true"></i> Filter Menu</button>
@@ -11,27 +12,38 @@
                 <label for="feature">Feature:</label>
                 <select name="feature" id="feature">
                     <option value="">Select Feature</option>
-                    <option value="new">New Arrival</option>
-                    <option value="bestseller">Bestseller</option>
-                    <option value="sale">On Sale</option>
+                    <option value="featured">Featured</option>
+                    <option value="arrivals">New Arrivals</option>
+                    <option value="bestselling">Bestselling</option>
+                    <option value="alphabetical">Alphabetically, A-Z</option>
+                    <option value="price-low">Price, low to high</option>
+                    <option value="price-high">Price, high to low</option>
+
                 </select>
             </div>
+
             <div class="filter-group">
-                <label for="price">Price:</label>
-                <select name="price" id="price">
-                    <option value="">Select Price Range</option>
-                    <option value="under-50">Under $50</option>
-                    <option value="50-100">$50 - $100</option>
-                    <option value="over-100">Over $100</option>
-                </select>
+                <label for="start_price">Start Price:
+                    <input type="text" name="start_price" value="<?php if(isset($_GET['start_price'])) { echo $_GET['start_price']; } else {echo "50";} ?>">
+                </label>
             </div>
+
+            <div class="filter-group">
+                <label for="end_price">End Price:
+                    <input type="text" name="end_price" value="<?php if(isset($_GET['start_price'])) { echo $_GET['end_price']; } else {echo "2000";} ?>">
+                </label>
+            </div>
+
             <div class="filter-group">
                 <label for="product">Product:</label>
                 <select name="product" id="product">
                     <option value="">Select Product</option>
                     <option value="shirts">Shirts</option>
-                    <option value="pants">Pants</option>
+                    <option value="tops">Tops</option>
                     <option value="jackets">Jackets</option>
+                    <option value="bottoms">Bottoms</option>
+                    <option value="knitwear">Knitwear</option>
+                    <option value="accessories">Accessories</option>
                 </select>
             </div>
             <div class="filter-group">
@@ -100,7 +112,7 @@
         margin-bottom: 0.5rem;
     }
 
-    .filter-group select {
+    .filter-group select, input {
         width: 100%;
         padding: 0.5rem;
         font-size: 1.5rem;

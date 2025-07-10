@@ -61,3 +61,9 @@
 .forgot a:hover {
     text-decoration: underline;
 }
+
+.no-products-found-text {
+    font-size: 2rem;
+    text-align: center;
+    color: red;
+}

@@ -21,7 +21,9 @@
     </div>
 
     <div class="nav-center">
+        <a href="/sonsEcommerce">
         <img class="nav-image" src="imgs/sons.png">
+        </a>
     </div>
 
     <div class="nav-right">
