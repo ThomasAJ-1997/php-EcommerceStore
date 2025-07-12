@@ -10,16 +10,44 @@
                 <h2> FILTERS </h2>
                 <hr>
                 <label for="feature">Feature:</label>
-                <select name="feature" id="feature">
-                    <option value="">Select Feature</option>
-                    <option value="featured">Featured</option>
-                    <option value="arrivals">New Arrivals</option>
-                    <option value="bestselling">Bestselling</option>
-                    <option value="alphabetical">Alphabetically, A-Z</option>
-                    <option value="price-low">Price, low to high</option>
-                    <option value="price-high">Price, high to low</option>
-
-                </select>
+                <div id="feature">
+                    <div class="radio-button">
+                        <input  type="radio" name="feature"
+                               value="featured" <?php if (isset($_GET['feature']) && $_GET['feature'] == "featured") {
+                            echo "checked";
+                        } ?>> Featured
+                    </div>
+                    <div class="radio-button">
+                        <input  type="radio" name="feature"
+                               value="new_arrivals" <?php if (isset($_GET['feature']) && $_GET['feature'] == "new arrivals") {
+                            echo "checked";
+                        } ?>> New Arrivals
+                    </div>
+                    <div class="radio-button">
+                        <input  type="radio" name="feature"
+                               value="bestselling" <?php if (isset($_GET['feature']) && $_GET['feature'] == "bestselling") {
+                            echo "checked";
+                        } ?>> Bestselling
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" name="feature"
+                               value="alphabetical" <?php if (isset($_GET['feature']) && $_GET['feature'] == "alphabetical") {
+                            echo "checked";
+                        } ?>> Alphabetically, A-Z
+                    </div>
+                    <div class="radio-button">
+                        <input  type="radio" name="feature"
+                               value="price_low" <?php if (isset($_GET['feature']) && $_GET['feature'] == "price_low") {
+                            echo "checked";
+                        } ?>> Price, low to high
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" name="feature"
+                               value="price_high" <?php if (isset($_GET['feature']) && $_GET['feature'] == "price_high") {
+                            echo "checked";
+                        } ?>> Price, high to low
+                    </div>
+                </div>
             </div>
 
             <div class="filter-group">
@@ -30,30 +58,60 @@
 
             <div class="filter-group">
                 <label for="end_price">End Price:
-                    <input type="text" name="end_price" value="<?php if(isset($_GET['start_price'])) { echo $_GET['end_price']; } else {echo "2000";} ?>">
+                    <input type="text" name="end_price" value="<?php if(isset($_GET['end_price'])) { echo $_GET['end_price']; } else {echo "2000";} ?>">
                 </label>
             </div>
 
             <div class="filter-group">
                 <label for="product">Product:</label>
-                <select name="product" id="product">
-                    <option value="">Select Product</option>
-                    <option value="shirts">Shirts</option>
-                    <option value="tops">Tops</option>
-                    <option value="jackets">Jackets</option>
-                    <option value="bottoms">Bottoms</option>
-                    <option value="knitwear">Knitwear</option>
-                    <option value="accessories">Accessories</option>
-                </select>
+                <div id="product">
+                    <div class="radio-button">
+                        <input type="radio" name="product"
+                               value="shirts" <?php if (isset($_GET['product']) && $_GET['product'] == "shirts") {
+                            echo "checked";
+                        } ?>> Shirts
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" name="product"
+                               value="tops" <?php if (isset($_GET['product']) && $_GET['product'] == "tops") {
+                            echo "checked";
+                        } ?>> Tops
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" name="product"
+                               value="jackets" <?php if (isset($_GET['product']) && $_GET['product'] == "jackets") {
+                            echo "checked";
+                        } ?>> Jackets
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" name="product"
+                               value="bottoms" <?php if (isset($_GET['product']) && $_GET['product'] == "bottoms") {
+                            echo "checked";
+                        } ?>> Bottoms
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" name="product"
+                               value="knitwear" <?php if (isset($_GET['product']) && $_GET['product'] == "knitwear") {
+                            echo "checked";
+                        } ?>> Knitwear
+                    </div>
+                    <div class="radio-button">
+                        <input type="radio" name="product"
+                               value="accessories" <?php if (isset($_GET['product']) && $_GET['product'] == "accessories") {
+                            echo "checked";
+                        } ?>> Accessories
+                    </div>
+                </div>
             </div>
             <div class="filter-group">
                 <label for="size">Size:</label>
                 <select name="size" id="size">
                     <option value="">Select Size</option>
-                    <option value="s">Small (S)</option>
-                    <option value="m">Medium (M)</option>
-                    <option value="l">Large (L)</option>
-                    <option value="xl">Extra Large (XL)</option>
+                    <option value="<?php if(isset($_GET['s'])) { echo $_GET['s']; } else {echo "s";} ?>">Small (S)</option>
+                    <option value="<?php if(isset($_GET['m'])) { echo $_GET['m']; } else {echo "m";} ?>">Medium (M)</option>
+                    <option value="<?php if(isset($_GET['l'])) { echo $_GET['l']; } else {echo "l";} ?>">Large (L)</option>
+                    <option value="<?php if(isset($_GET['xl'])) { echo $_GET['xl']; } else {echo "xl";} ?>">Extra Large (XL)</option>
+                    <option value="<?php if(isset($_GET['xxl'])) { echo $_GET['xxl']; } else {echo "xxl";} ?>">Extra Extra Large (XXL)</option>
                 </select>
             </div>
             <button class="filter-button" type="submit">Apply Filters <i class="fa fa-plus" aria-hidden="true"></i> </button>
@@ -98,7 +156,6 @@
 
     .filter-group h2 {
         font-size: 4rem;
-        margin-bottom: 2rem;
     }
 
     .filter-group hr {
@@ -112,7 +169,7 @@
         margin-bottom: 0.5rem;
     }
 
-    .filter-group select, input {
+    .filter-group select, input  {
         width: 100%;
         padding: 0.5rem;
         font-size: 1.5rem;
@@ -122,6 +179,26 @@
         border-left: none;
         border-right: none;
         border-bottom: 1px solid black;
+    }
+
+    .radio-button {
+        display: block;
+        position: relative;
+        padding-left: 45px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 14px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    .radio-button input {
+        position: absolute;
+        cursor: pointer;
+
     }
 </style>
 

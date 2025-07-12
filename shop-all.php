@@ -6,10 +6,7 @@ require 'classes/Products.php';
 $db = new Connect();
 $conn = $db->connect();
 
-$item_class = new Products();
-
-
-
+$product_class = new Products();
 
 ?>
 
@@ -22,17 +19,74 @@ $item_class = new Products();
 <section class="shop-headline">
     <h2 class="shop-heading">SHOP ALL</h2>
     <p>Discover unique vintage-inspired workwear clothing designed for craftspeople, artisans
-    and pioneers. Our collection features durable and stylish pieces inspired by the pasy and
+    and pioneers. Our collection features durable and stylish pieces inspired by the past and
     made from hard-wearing materials for modern life.</p>
 
     <?php require 'includes/filter-menu.php'; ?>
 
     <?php
 
-    if (isset($_GET['start_price']) && isset($_GET['end_price'])) {
-        $products = $item_class->get_product_price_filter($conn, $_GET['start_price'], $_GET['end_price']);
-    } else {
-        $products = $item_class->all_products($conn);
+//    $products = $product_class->get_all_product_by_shirts($conn);
+//    echo '<pre>';
+//    var_dump($products);
+//    echo '</pre>';
+//    exit;
+
+    $start_price = $_GET['start_price'] ?? null;
+    $end_price = $_GET['end_price'] ?? null;
+
+
+    switch ($_GET['feature'] ?? 'featured') {
+        case 'featured':
+            if (empty($_GET['product'])) {
+                $products = $product_class->all_products($conn, $start_price, $end_price);
+                break;
+            }
+
+        case 'new_arrivals':
+            $products = $product_class->get_product_by_new_arrivals($conn);
+            break;
+        case 'bestselling':
+            $products = $product_class->get_product_by_bestselling($conn);
+            break;
+        case 'alphabetical':
+            $products = $product_class->get_product_alphabetical_order($conn);
+            break;
+        case 'price_low':
+            $products = $product_class->get_product_price_low_to_high($conn);
+            break;
+        case 'price_high':
+            $products = $product_class->get_product_price_high_to_low($conn);
+            break;
+        default:
+            $products = null;
+    }
+
+    switch ($_GET['product'] ?? null) {
+        case 'shirts':
+            $products = $product_class->get_all_products_by_shirts($conn);
+            break;
+        case 'tops':
+            $products = $product_class->get_all_products_by_tops($conn);
+            break;
+        case 'jackets':
+            $products = $product_class->get_all_products_by_jackets($conn);
+            break;
+        case 'bottoms':
+            $products = $product_class->get_all_products_by_bottoms($conn);
+            break;
+        case 'knitwear':
+            $products = $product_class->get_all_products_by_knitwear($conn);
+            break;
+        case 'accessories':
+            $products = $product_class->get_all_products_by_accessories($conn);
+            break;
+    }
+//
+    if (empty($_GET['feature']) && empty($_GET['product']) && isset($_GET['start_price']) && isset($_GET['end_price'])) {
+        $products = $product_class->get_product_price_filter($conn, $_GET['start_price'], $_GET['end_price']);
+        echo 'this price is the problem';
+
     }
 
 
