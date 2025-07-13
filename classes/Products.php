@@ -223,14 +223,14 @@ class Products
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// PRODUCT FILTERING
     /**
-     * Retrieves a list of products filtering for shirts within the specified price range
+     * Retrieves a list of products that belong to a specified category and are within a specified price range.
      *
      * @param  PDO  $conn  The database connection object used to execute the query.
+     * @param  string  $category  The category name used to filter the products.
      *
-     * @return array Returns an array of products that match the specified price range and category name type
-     *
+     * @return array Returns an array of products filtered by the specified category and price range.
      */
-    public function get_all_products_by_shirts($conn): array
+    public function get_all_products_by_category($conn, string $category): array
     {
         $starting_price_filter = $_GET['start_price'];
         $ending_price_filter = $_GET['end_price'];
@@ -247,7 +247,7 @@ class Products
                 FROM product_item pi
                 INNER JOIN product p ON pi.product_id = p.product_id
                 INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
-                WHERE category_name LIKE '%shirts%'
+                WHERE category_name LIKE '%$category%'
                 AND original_price BETWEEN $starting_price_filter AND $ending_price_filter;";
 
         $stmt = $conn->prepare($sql);
@@ -258,140 +258,7 @@ class Products
 
     }
 
-    public function get_all_products_by_tops($conn): array
-    {
-        $starting_price_filter = $_GET['start_price'];
-        $ending_price_filter = $_GET['end_price'];
 
-        $sql = "SELECT 
-                pi.product_id,
-                p.product_name,
-                pi.product_item_id,
-                pc.product_category_id,
-                pc.category_name,
-                pi.product_front_image,
-                pi.original_price,
-                pi.product_release_date
-                FROM product_item pi
-                INNER JOIN product p ON pi.product_id = p.product_id
-                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
-                WHERE category_name LIKE '%tops%'
-                AND original_price BETWEEN $starting_price_filter AND $ending_price_filter;";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    }
-
-    public function get_all_products_by_jackets($conn): array
-    {
-        $starting_price_filter = $_GET['start_price'];
-        $ending_price_filter = $_GET['end_price'];
-
-        $sql = "SELECT 
-                pi.product_id,
-                p.product_name,
-                pi.product_item_id,
-                pc.product_category_id,
-                pc.category_name,
-                pi.product_front_image,
-                pi.original_price,
-                pi.product_release_date
-                FROM product_item pi
-                INNER JOIN product p ON pi.product_id = p.product_id
-                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
-                WHERE category_name LIKE '%jackets%'
-                AND original_price BETWEEN $starting_price_filter AND $ending_price_filter;";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    }
-
-    public function get_all_products_by_bottoms($conn): array
-    {
-        $starting_price_filter = $_GET['start_price'];
-        $ending_price_filter = $_GET['end_price'];
-
-        $sql = "SELECT 
-                pi.product_id,
-                p.product_name,
-                pi.product_item_id,
-                pc.product_category_id,
-                pc.category_name,
-                pi.product_front_image,
-                pi.original_price,
-                pi.product_release_date
-                FROM product_item pi
-                INNER JOIN product p ON pi.product_id = p.product_id
-                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
-                WHERE category_name LIKE '%bottoms%'
-                AND original_price BETWEEN $starting_price_filter AND $ending_price_filter;";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    }
-
-    public function get_all_products_by_knitwear($conn): array
-    {
-        $starting_price_filter = $_GET['start_price'];
-        $ending_price_filter = $_GET['end_price'];
-
-        $sql = "SELECT 
-                pi.product_id,
-                p.product_name,
-                pi.product_item_id,
-                pc.product_category_id,
-                pc.category_name,
-                pi.product_front_image,
-                pi.original_price,
-                pi.product_release_date
-                FROM product_item pi
-                INNER JOIN product p ON pi.product_id = p.product_id
-                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
-                WHERE category_name LIKE '%knitwear%'
-                AND original_price BETWEEN $starting_price_filter AND $ending_price_filter;";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    }
-
-    public function get_all_products_by_accessories($conn): array
-    {
-        $starting_price_filter = $_GET['start_price'];
-        $ending_price_filter = $_GET['end_price'];
-
-        $sql = "SELECT 
-                pi.product_id,
-                p.product_name,
-                pi.product_item_id,
-                pc.product_category_id,
-                pc.category_name,
-                pi.product_front_image,
-                pi.original_price,
-                pi.product_release_date
-                FROM product_item pi
-                INNER JOIN product p ON pi.product_id = p.product_id
-                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
-                WHERE category_name LIKE '%accessories%'
-                AND original_price BETWEEN $starting_price_filter AND $ending_price_filter;";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    }
 
 
     }

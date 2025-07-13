@@ -103,18 +103,14 @@
                     </div>
                 </div>
             </div>
-            <div class="filter-group">
-                <label for="size">Size:</label>
-                <select name="size" id="size">
-                    <option value="">Select Size</option>
-                    <option value="<?php if(isset($_GET['s'])) { echo $_GET['s']; } else {echo "s";} ?>">Small (S)</option>
-                    <option value="<?php if(isset($_GET['m'])) { echo $_GET['m']; } else {echo "m";} ?>">Medium (M)</option>
-                    <option value="<?php if(isset($_GET['l'])) { echo $_GET['l']; } else {echo "l";} ?>">Large (L)</option>
-                    <option value="<?php if(isset($_GET['xl'])) { echo $_GET['xl']; } else {echo "xl";} ?>">Extra Large (XL)</option>
-                    <option value="<?php if(isset($_GET['xxl'])) { echo $_GET['xxl']; } else {echo "xxl";} ?>">Extra Extra Large (XXL)</option>
-                </select>
-            </div>
+
+
             <button class="filter-button" type="submit">Apply Filters <i class="fa fa-plus" aria-hidden="true"></i> </button>
+            <br>
+            <button class="filter-button" type="reset" onclick="window.location.href='shop-all.php';">Reset
+                Filters <i class="fa fa-refresh" aria-hidden="true"></i>
+            </button>
+            <br>
         </form>
     </div>
 </section>
@@ -133,6 +129,7 @@
         border: none;
         cursor: pointer;
         border-radius: 5px;
+        display: block;
         position: relative;
         z-index: 1001;
     }
