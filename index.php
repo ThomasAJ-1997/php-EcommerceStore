@@ -1,8 +1,14 @@
 <?php
 require 'classes/Connect.php';
+require 'classes/Products.php';
 
 $db = new Connect();
 $conn = $db->connect();
+
+$product_class = new Products();
+
+$products_new_arrivals = $product_class->product_new_arrivals($conn);
+$products_bestsellers = $product_class->product_bestsellers($conn);
 ?>
 
 <?php require 'includes/header.php'; ?>
@@ -26,64 +32,27 @@ $conn = $db->connect();
                 <p>New Arrivals</p>
             </div>
             <div>
-                <p><a href="">View All</a></p>
+                <p><a href="shop-new-arrivals.php">View All</a></p>
             </div>
         </div>
 
         <div class="item-collection"
              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-            <div class="item item1" style="text-align: center;">
-                <div>
-                    <a href="">
-                        <img src="content/top.avif" style="width: 100%; height: auto;">
-                        <div class="item-information">
-                            <p>Placeholder Name</p>
-                            <p>Placeholder Price</p>
-                            <br><br>
-                        </div>
-                    </a>
+            <?php foreach ($products_new_arrivals as $product_new): ?>
+                <div class="item item1" style="text-align: center;">
+                    <div>
+                        <a href="">
+                            <img src="presentation-imgs/<?= $product_new['product_front_image']; ?>.webp" style="width: 100%;">
+                            <div class="item-information">
+                                <p> <?= htmlspecialchars($product_new['product_name']); ?> </p>
+                                <p> £<?= htmlspecialchars($product_new['original_price']) ?> </p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="item item2" style="text-align: center;">
-                <div>
-                    <a href="">
-                        <img src="content/top.avif" style="width: 100%; height: auto;">
-                        <div class="item-information">
-                            <p>Placeholder Name</p>
-                            <p>Placeholder Price</p>
-                            <br><br>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="item item3" style="text-align: center;">
-                <div>
-                    <a href="">
-                        <img src="content/top.avif" style="width: 100%; height: auto;">
-                        <div class="item-information">
-                            <p>Placeholder Name</p>
-                            <p>Placeholder Price</p>
-                            <br><br>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="item item4" style="text-align: center;">
-                <div>
-                    <a href="">
-                        <img src="content/top.avif" style="width: 100%; height: auto;">
-                        <div class="item-information">
-                            <p>Placeholder Name</p>
-                            <p>Placeholder Price</p>
-                            <br><br>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
+
     </div>
 </section>
 
@@ -125,65 +94,28 @@ $conn = $db->connect();
                 <p>Best Sellers</p>
             </div>
             <div>
-                <p><a href="">View All</a></p>
+                <p><a href="shop-all.php">View All</a></p>
             </div>
         </div>
 
         <div class="item-collection"
              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-            <div class="item item1" style="text-align: center;">
-                <div>
-                    <a href="">
-                        <img src="content/top.avif" style="width: 100%; height: auto;">
-                        <div class="item-information">
-                            <p>Placeholder Name</p>
-                            <p>Placeholder Price</p>
-                            <br><br>
-                        </div>
-                    </a>
+            <?php foreach ($products_bestsellers as $product_best): ?>
+                <div class="item item1" style="text-align: center;">
+                    <div>
+                        <a href="">
+                            <img src="presentation-imgs/<?= $product_best['product_front_image']; ?>.webp" style="width: 100%;">
+                            <div class="item-information">
+                                <p> <?= htmlspecialchars($product_best['product_name']); ?> </p>
+                                <p> £<?= htmlspecialchars($product_best['original_price']) ?> </p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="item item2" style="text-align: center;">
-                <div>
-                    <a href="">
-                        <img src="content/top.avif" style="width: 100%; height: auto;">
-                        <div class="item-information">
-                            <p>Placeholder Name</p>
-                            <p>Placeholder Price</p>
-                            <br><br>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="item item3" style="text-align: center;">
-                <div>
-                    <a href="">
-                        <img src="content/top.avif" style="width: 100%; height: auto;">
-                        <div class="item-information">
-                            <p>Placeholder Name</p>
-                            <p>Placeholder Price</p>
-                            <br><br>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
-            <div class="item item4" style="text-align: center;">
-                <div>
-                    <a href="">
-                        <img src="content/top.avif" style="width: 100%; height: auto;">
-                        <div class="item-information">
-                            <p>Placeholder Name</p>
-                            <p>Placeholder Price</p>
-                            <br><br>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
-    </div>
+
+        </div>
 </section>
 
 <section class="advertisement-section advertisement-section2">
@@ -212,8 +144,6 @@ $conn = $db->connect();
 <section class="break"> </section>
 
 <?php require 'includes/footer.php'; ?>
-
-
 
 
 

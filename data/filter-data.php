@@ -62,5 +62,3 @@ if (empty($_GET['feature']) && empty($_GET['product']) && isset($_GET['start_pri
     echo 'this price is the problem';
 
 }
-
-

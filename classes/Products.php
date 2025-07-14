@@ -177,7 +177,7 @@ class Products
                 FROM product_item pi
                 INNER JOIN product p ON pi.product_id = p.product_id
                 WHERE original_price BETWEEN $starting_price_filter AND $ending_price_filter
-                ORDER BY pi.product_release_date DESC;";
+                ORDER BY pi.product_release_date DESC";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();
@@ -258,9 +258,238 @@ class Products
 
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// LANDING PAGE
 
+    public function product_new_arrivals($conn)
+    {
+        $sql = "SELECT
+                p.product_id,
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image, 
+                pi.original_price,
+                pi.product_release_date
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                ORDER BY pi.product_release_date DESC
+                LIMIT 4";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function product_bestsellers($conn)
+    {
+        $sql = "SELECT
+                p.product_id,
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image, 
+                pi.original_price,
+                pi.product_sold
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                ORDER BY pi.product_sold DESC
+                LIMIT 4";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// NEW ARRIVALS (LIMIT) SECTION
+
+    public function get_product_by_most_newest_arrivals($conn, int|null $start_price, int|null $end_price): array
+    {
+        $starting_price_filter = $start_price ?? 0;
+        $ending_price_filter = $end_price ?? PHP_INT_MAX;
+
+        $sql = "SELECT 
+                p.product_id,
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pi.original_price,
+                pi.product_release_date
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                WHERE original_price BETWEEN :start_price AND :end_price 
+                ORDER BY product_release_date DESC
+                LIMIT 20";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(':start_price', $starting_price_filter, PDO::PARAM_INT);
+        $stmt->bindParam(':end_price', $ending_price_filter, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_product_price_filter_new_arrivals(PDO $conn, int|null $start_price, int|null $end_price): array
+        {
+            $starting_price_filter = $start_price;
+            $ending_price_filter = $end_price;
+
+            $sql = "SELECT 
+                    p.product_id,
+                    p.product_name,
+                    pi.product_item_id,
+                    pi.product_front_image,
+                    pi.original_price,
+                    pi.product_release_date
+                    FROM product_item pi
+                    INNER JOIN product p ON pi.product_id = p.product_id
+                    WHERE original_price BETWEEN $starting_price_filter AND $ending_price_filter 
+                    ORDER BY product_release_date DESC
+                    LIMIT 20";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+
+    public function get_all_new_arrivals_by_category($conn, string $category): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
+
+        $sql = "SELECT 
+                pi.product_id,
+                p.product_name,
+                pi.product_item_id,
+                pc.product_category_id,
+                pc.category_name,
+                pi.product_front_image,
+                pi.original_price,
+                pi.product_release_date
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
+                WHERE category_name LIKE '%$category%'
+                AND original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY product_release_date DESC
+                LIMIT 20";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     }
 
+    public function get_new_arrivals_by_bestseller($conn): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
 
+        $sql = "SELECT
+                pi.product_id,
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pi.original_price,
+                pi.product_sold,
+                pi.product_release_date
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                WHERE original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY pi.product_sold DESC
+                LIMIT 20";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_new_arrivals_by_alphabetical_order($conn): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
+
+        $sql = "SELECT
+                pi.product_id,
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pi.original_price,
+                pi.product_sold,
+                pi.product_release_date
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                WHERE original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY p.product_name DESC
+                LIMIT 20";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_new_arrivals_by_price_low_to_high($conn): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
+
+        $sql = "SELECT
+                pi.product_id,
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pi.original_price,
+                pi.product_sold,
+                pi.product_release_date
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                WHERE original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY pi.original_price ASC
+                LIMIT 10";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_new_arrivals_by_price_high_to_low($conn): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
+
+        $sql = "SELECT
+                pi.product_id,
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pi.original_price,
+                pi.product_sold,
+                pi.product_release_date
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                WHERE original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY pi.original_price DESC;
+                LIMIT 10";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
+
+
+
+
+
+}
