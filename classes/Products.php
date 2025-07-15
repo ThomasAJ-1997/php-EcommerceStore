@@ -260,7 +260,7 @@ class Products
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// LANDING PAGE
+    /// AUTO LOADED SELECT STATEMENTS
 
     public function product_new_arrivals($conn)
     {
@@ -295,6 +295,28 @@ class Products
                 INNER JOIN product p ON pi.product_id = p.product_id
                 ORDER BY pi.product_sold DESC
                 LIMIT 4";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function product_category_type($conn, $category)
+    {
+        $sql = "SELECT 
+                pi.product_id,
+                p.product_name,
+                pi.product_item_id,
+                pc.product_category_id,
+                pc.category_name,
+                pi.product_front_image,
+                pi.original_price,
+                pi.product_release_date
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
+                WHERE category_name LIKE '%$category%'";
 
         $stmt = $conn->prepare($sql);
         $stmt->execute();

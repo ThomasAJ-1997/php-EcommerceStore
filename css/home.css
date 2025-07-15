@@ -310,7 +310,7 @@
 .presale-section {
     position: relative;
     height: 50vh;
-    width: 95%;
+    width: 95vw;
     margin: auto;
     background: url("../content/pre-loved.webp") center;
     background-size: cover;
