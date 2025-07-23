@@ -1,29 +1,28 @@
 <?php
 
-
 $start_price = $_GET['start_price'] ?? null;
 $end_price = $_GET['end_price'] ?? null;
 
+if ($_GET['feature'] ?? 'featured') {
+    $products = $product_class->product_category_type($conn, $category_name);
+}
+
+
 switch ($_GET['feature'] ?? 'featured') {
-    case 'featured':
-        if (empty($_GET['product'])) {
-            $products = $product_class->get_product_by_most_newest_arrivals($conn, $start_price, $end_price);
-            break;
-        }
     case 'new_arrivals':
-        $products = $product_class->get_product_by_most_newest_arrivals($conn, $start_price, $end_price);
+        $products = $product_class->get_category_type_by_new_arrivals($conn, $category_name);
         break;
     case 'bestselling':
-        $products = $product_class->get_new_arrivals_by_bestseller($conn);
+        $products = $product_class->get_category_type_by_bestselling($conn, $category_name);
         break;
     case 'alphabetical':
-        $products = $product_class->get_new_arrivals_by_alphabetical_order($conn);
+        $products = $product_class->get_category_type_by_alphabetical_order($conn, $category_name);
         break;
     case 'price_low':
-        $products = $product_class->get_new_arrivals_by_price_low_to_high($conn);
+        $products = $product_class->get_category_type_by_price_low_to_high($conn, $category_name);
         break;
     case 'price_high':
-        $products = $product_class->get_new_arrivals_by_price_high_to_low($conn);
+        $products = $product_class->get_category_type_by_price_high_to_low($conn, $category_name);
         break;
     default:
 }

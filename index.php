@@ -61,7 +61,7 @@ $products_bestsellers = $product_class->product_bestsellers($conn);
         <div class="advertisement">
             <div class="advert-information">
                 <span>Invest in style today</span>
-                <h2>SUMMER <br> SHIRTS</h2>
+                <h2>LIGHTWEIGHT <br> SHIRTS</h2>
                 <p>Keep it classic this season with our range of shirts inspired by the icons of style
                     <strong>Invest in timeless style</strong></p>
                 <a href="">SHOP SHIRTS ></a>

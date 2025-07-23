@@ -498,7 +498,7 @@ class Products
                 pi.product_release_date
                 FROM product_item pi
                 INNER JOIN product p ON pi.product_id = p.product_id
-                WHERE original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                WHERE  original_price BETWEEN $starting_price_filter AND $ending_price_filter
                 ORDER BY pi.original_price DESC;
                 LIMIT 10";
 
@@ -506,6 +506,157 @@ class Products
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// FILTER TYPES
+    public function get_category_type_by_alphabetical_order($conn, $category): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
+
+
+        $sql = "SELECT
+                p.product_id, 
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pc.product_category_id,
+                pc.category_name, 
+                pi.original_price
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
+                WHERE category_name LIKE '%$category%' AND 
+                original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY p.product_name ASC;";
+
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_category_type_by_price_low_to_high($conn, $category): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
+
+        $sql = "SELECT
+                p.product_id, 
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pc.product_category_id,
+                pc.category_name, 
+                pi.original_price
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
+                WHERE category_name LIKE '%$category%' AND 
+                original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY pi.original_price ASC;";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_category_type_by_price_high_to_low($conn, $category): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
+
+        $sql = "SELECT
+                p.product_id, 
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pc.product_category_id,
+                pc.category_name, 
+                pi.original_price
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
+                WHERE category_name LIKE '%$category%' AND 
+                original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY pi.original_price DESC;";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_category_type_by_bestselling($conn, $category): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
+
+        $sql = "SELECT
+                p.product_id, 
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pc.product_category_id,
+                pc.category_name, 
+                pi.original_price
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
+                WHERE category_name LIKE '%$category%' AND 
+                original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY pi.product_sold DESC;";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function get_category_type_by_new_arrivals($conn, $category): array
+    {
+        $starting_price_filter = $_GET['start_price'];
+        $ending_price_filter = $_GET['end_price'];
+
+        $sql = "SELECT
+                p.product_id, 
+                p.product_name,
+                pi.product_item_id,
+                pi.product_front_image,
+                pc.product_category_id,
+                pc.category_name, 
+                pi.original_price
+                FROM product_item pi
+                INNER JOIN product p ON pi.product_id = p.product_id
+                INNER JOIN product_category pc ON p.product_category_id = pc.product_category_id
+                WHERE category_name LIKE '%$category%' AND 
+                original_price BETWEEN $starting_price_filter AND $ending_price_filter
+                ORDER BY pi.product_release_date DESC";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// FETCH SPECIFIC DATA
+    public function get_product_by_id($conn, $product_id): array|false
+    {
+        $sql = "SELECT * FROM product WHERE product_id = :product_id";
+
+        $stmt = $conn->prepare($sql);
+
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
 
